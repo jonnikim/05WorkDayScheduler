@@ -42,25 +42,33 @@
           for (var i = 0; i < 9; i++) {
             var container = $(".container");
             var timeBlock = $("<div>");
-            var hour = $("<div>");
+            var hour = $("<p>");
             var textarea = $("<textarea>");
             var button = $("<button>");
             var icon = $("<i>");
             var hourID = i + 9;
-            var hourDisplay = hourID + ":00";
+            var hourDisplay;
+            function testHour() {
+              if (hourID <= 12) {
+                hourDisplay = hourID + ":00 AM";
+              } else {
+                hourDisplay = hourID - 12 + ":00 PM";
+              }
+            }
+            testHour();
             var curHour = moment().format("H");
             var user = "user" + hourID;
             var getStorage = $("<button>");
             timeBlock.addClass("row time-block");
             timeBlock.appendTo(container);
-            hour.addClass("col-1 hour");
-            hour.attr("id", hourID);
+            timeBlock.attr("id", hourID);
+            hour.addClass("col-2 hour");
             hour.text(hourDisplay);
             hour.appendTo(timeBlock);
-            textarea.addClass("col-10");
+            textarea.addClass("col-9");
             textarea.appendTo(timeBlock);
             textarea.val(localStorage.getItem(user));
-            button.addClass("col-1 saveBtn d-flex align-items-center");
+            button.addClass("col-1 saveBtn ");
             button.appendTo(timeBlock);
             icon.addClass("fas fa-save");
             icon.appendTo(button);
@@ -83,12 +91,12 @@
             .prev()
             .val();
           var id = $(this)
-            .prev()
-            .prev()
+            .parent()
             .attr("id");
           var user = "user" + id;
 
           localStorage.setItem(user, text);
+          init();
         });
       });
     </script>
