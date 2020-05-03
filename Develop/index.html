@@ -28,46 +28,19 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container">
-      <!-- Timeblocks go here -->
-      <!-- <div class="row time-block">
-        <div class="col-1 hour" id="15" data-hr="15">3:00PM</div>
-        <textarea class="col-10">test</textarea>
-        <button class="col-1 saveBtn d-flex align-items-center">
-          <i class="fas fa-save"></i>
-        </button>
-      </div>
-      <div class="row time-block">
-        <div class="col-1 hour" id="16" data-hr="16">4:00PM</div>
-        <textarea class="col-10"></textarea>
-        <button class="col-1 saveBtn d-flex align-items-center">
-          <i class="fas fa-save"></i>
-        </button>
-      </div>
-      <div class="row time-block">
-        <div class="col-1 hour" id="17" data-hr="17">5:00PM</div>
-        <textarea class="col-10"></textarea>
-        <button class="col-1 saveBtn d-flex align-items-center">
-          <i class="fas fa-save"></i>
-        </button>
-      </div> -->
-    </div>
+    <div class="container"></div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script>
       $(function() {
-        var container = $(".container");
-
         function init() {
           var currentDay = $("#currentDay");
           var currentDayVal = moment();
           currentDay.text(currentDayVal.format("dddd, MMMM Do YYYY"));
 
-          for (var i = 0; i < 8; i++) {
-            // var hourBlock = $(".time-block .hour:first-child");
-            // hourBlock.css("text-decoration", "underline");
-
+          for (var i = 0; i < 9; i++) {
+            var container = $(".container");
             var timeBlock = $("<div>");
             var hour = $("<div>");
             var textarea = $("<textarea>");
@@ -76,7 +49,8 @@
             var hourID = i + 9;
             var hourDisplay = hourID + ":00";
             var curHour = moment().format("H");
-
+            var user = "user" + hourID;
+            var getStorage = $("<button>");
             timeBlock.addClass("row time-block");
             timeBlock.appendTo(container);
             hour.addClass("col-1 hour");
@@ -85,36 +59,25 @@
             hour.appendTo(timeBlock);
             textarea.addClass("col-10");
             textarea.appendTo(timeBlock);
+            textarea.val(localStorage.getItem(user));
             button.addClass("col-1 saveBtn d-flex align-items-center");
             button.appendTo(timeBlock);
             icon.addClass("fas fa-save");
             icon.appendTo(button);
 
             if (hourID < curHour) {
-              // console.log(hour.attr("id") + "past");
               textarea.addClass("past");
             } else if (hourID == curHour) {
-              // console.log(hour.attr("id") + "present");
-
               textarea.addClass("present");
             } else if (hourID > curHour) {
-              // console.log(hour.attr("id") + "future");
-
               textarea.addClass("future");
             } else {
               return;
             }
-            // var timeBlock = $(".time-block");
-            // var textArea = timeBlock.nextSibling;
-            // var x = $(".time-block .saveBtn:nth-child(3)");
-            // x.css("background-color", "green");
-            // console.log(x);
-
-            // .siblings("task")
-            // .attr("class");
           }
         }
         init();
+
         $(".saveBtn").on("click", function() {
           var text = $(this)
             .prev()
@@ -123,9 +86,10 @@
             .prev()
             .prev()
             .attr("id");
-          console.log(id + text);
+          var user = "user" + id;
+
+          localStorage.setItem(user, text);
         });
-        // hourBlock.text("test");
       });
     </script>
   </body>
