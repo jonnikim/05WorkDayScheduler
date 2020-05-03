@@ -36,8 +36,7 @@
       $(function() {
         function init() {
           var currentDay = $("#currentDay");
-          var currentDayVal = moment();
-          currentDay.text(currentDayVal.format("dddd, MMMM Do YYYY"));
+          currentDay.text(moment().format("dddd, MMMM Do YYYY, hh:mmA"));
 
           for (var i = 0; i < 9; i++) {
             var container = $(".container");
@@ -85,7 +84,6 @@
           }
         }
         init();
-
         $(".saveBtn").on("click", function() {
           var text = $(this)
             .prev()
