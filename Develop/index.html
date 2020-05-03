@@ -30,36 +30,80 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
-      <div class="row time-block">
+      <!-- <div class="row time-block">
         <div class="col-1 hour" id="15" data-hr="15">3:00PM</div>
-        <textarea class="col-10 past"></textarea>
+        <textarea class="col-10">test</textarea>
         <button class="col-1 saveBtn d-flex align-items-center">
           <i class="fas fa-save"></i>
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour" id="16" data-hr="16">4:00PM</div>
-        <textarea class="col-10 present"></textarea>
+        <textarea class="col-10"></textarea>
         <button class="col-1 saveBtn d-flex align-items-center">
           <i class="fas fa-save"></i>
         </button>
       </div>
       <div class="row time-block">
         <div class="col-1 hour" id="17" data-hr="17">5:00PM</div>
-        <textarea class="col-10 future"></textarea>
+        <textarea class="col-10"></textarea>
         <button class="col-1 saveBtn d-flex align-items-center">
           <i class="fas fa-save"></i>
         </button>
-      </div>
+      </div> -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script>
       $(function() {
+        var container = $(".container");
+
+        function init() {
+          for (var i = 0; i < 8; i++) {
+            console.log("init" + (i + 1));
+            // var div = $("<div>");
+            var timeBlock = $("<div>");
+            timeBlock.addClass("row time-block");
+            var hour = $("<div>");
+            hour.addClass("col-1 hour");
+            var hourID = i + 9;
+            hour.attr("id", hourID);
+            var hourDisplay = hourID + i + ":00";
+            hour.text(hourDisplay);
+            timeBlock.append(hour);
+            var textarea = $("<textarea>");
+            textarea.addClass("col-10");
+            timeBlock.append(textarea);
+            var button = $("<button>");
+            button.addClass("col-1 saveBtn d-flex align-items-center");
+            var icon = $("<i>");
+            icon.addClass("fas fa-save");
+            icon.appendTo(button);
+            timeBlock.append(button);
+            container.append(timeBlock);
+            // var timeBlock = $(".time-block");
+            // var textArea = timeBlock.nextSibling;
+            // var x = $(".time-block .saveBtn:nth-child(3)");
+            // x.css("background-color", "green");
+            // console.log(x);
+
+            // .siblings("task")
+            // .attr("class");
+          }
+        }
+        init();
+        for (var i = 0; i < 8; i++) {
+          // console.log(i);
+        }
+
         var currentDay = $("#currentDay");
         var currentDayVal = moment();
         currentDay.text(currentDayVal.format("dddd, MMMM Do YYYY"));
+
+        var hourBlock = $(".time-block .hour:first-child");
+        hourBlock.css("text-decoration", "underline");
+        // hourBlock.text("test");
       });
     </script>
   </body>
