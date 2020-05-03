@@ -30,9 +30,37 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <div class="row time-block">
+        <div class="col-1 hour" id="15" data-hr="15">3:00PM</div>
+        <textarea class="col-10 past"></textarea>
+        <button class="col-1 saveBtn d-flex align-items-center">
+          <i class="fas fa-save"></i>
+        </button>
+      </div>
+      <div class="row time-block">
+        <div class="col-1 hour" id="16" data-hr="16">4:00PM</div>
+        <textarea class="col-10 present"></textarea>
+        <button class="col-1 saveBtn d-flex align-items-center">
+          <i class="fas fa-save"></i>
+        </button>
+      </div>
+      <div class="row time-block">
+        <div class="col-1 hour" id="17" data-hr="17">5:00PM</div>
+        <textarea class="col-10 future"></textarea>
+        <button class="col-1 saveBtn d-flex align-items-center">
+          <i class="fas fa-save"></i>
+        </button>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script>
+      $(function() {
+        var currentDay = $("#currentDay");
+        var currentDayVal = moment();
+        currentDay.text(currentDayVal.format("dddd, MMMM Do YYYY"));
+      });
+    </script>
   </body>
 </html>
