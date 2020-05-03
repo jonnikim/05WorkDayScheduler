@@ -60,28 +60,50 @@
         var container = $(".container");
 
         function init() {
+          var currentDay = $("#currentDay");
+          var currentDayVal = moment();
+          currentDay.text(currentDayVal.format("dddd, MMMM Do YYYY"));
+
           for (var i = 0; i < 8; i++) {
-            console.log("init" + (i + 1));
-            // var div = $("<div>");
+            // var hourBlock = $(".time-block .hour:first-child");
+            // hourBlock.css("text-decoration", "underline");
+
             var timeBlock = $("<div>");
-            timeBlock.addClass("row time-block");
             var hour = $("<div>");
-            hour.addClass("col-1 hour");
-            var hourID = i + 9;
-            hour.attr("id", hourID);
-            var hourDisplay = hourID + i + ":00";
-            hour.text(hourDisplay);
-            timeBlock.append(hour);
             var textarea = $("<textarea>");
-            textarea.addClass("col-10");
-            timeBlock.append(textarea);
             var button = $("<button>");
-            button.addClass("col-1 saveBtn d-flex align-items-center");
             var icon = $("<i>");
+            var hourID = i + 9;
+            var hourDisplay = hourID + ":00";
+            var curHour = moment().format("H");
+
+            timeBlock.addClass("row time-block");
+            timeBlock.appendTo(container);
+            hour.addClass("col-1 hour");
+            hour.attr("id", hourID);
+            hour.text(hourDisplay);
+            hour.appendTo(timeBlock);
+            textarea.addClass("col-10");
+            textarea.appendTo(timeBlock);
+            button.addClass("col-1 saveBtn d-flex align-items-center");
+            button.appendTo(timeBlock);
             icon.addClass("fas fa-save");
             icon.appendTo(button);
-            timeBlock.append(button);
-            container.append(timeBlock);
+
+            if (hourID < curHour) {
+              // console.log(hour.attr("id") + "past");
+              textarea.addClass("past");
+            } else if (hourID == curHour) {
+              // console.log(hour.attr("id") + "present");
+
+              textarea.addClass("present");
+            } else if (hourID > curHour) {
+              // console.log(hour.attr("id") + "future");
+
+              textarea.addClass("future");
+            } else {
+              return;
+            }
             // var timeBlock = $(".time-block");
             // var textArea = timeBlock.nextSibling;
             // var x = $(".time-block .saveBtn:nth-child(3)");
@@ -93,16 +115,16 @@
           }
         }
         init();
-        for (var i = 0; i < 8; i++) {
-          // console.log(i);
-        }
-
-        var currentDay = $("#currentDay");
-        var currentDayVal = moment();
-        currentDay.text(currentDayVal.format("dddd, MMMM Do YYYY"));
-
-        var hourBlock = $(".time-block .hour:first-child");
-        hourBlock.css("text-decoration", "underline");
+        $(".saveBtn").on("click", function() {
+          var text = $(this)
+            .prev()
+            .val();
+          var id = $(this)
+            .prev()
+            .prev()
+            .attr("id");
+          console.log(id + text);
+        });
         // hourBlock.text("test");
       });
     </script>
