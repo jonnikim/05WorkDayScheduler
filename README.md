@@ -1,8 +1,37 @@
 ## 05 Work Day Scheduler
+![Project license badge](https://img.shields.io/badge/license-MIT-brightgreen)
 
-https://jonnikim.github.io/05WorkDayScheduler/
+Create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
 
-For week 5's homework, we were instructed to create a Work Day Scheduler.
+
+# Table of Contents
+  * [User Story](#User-Story)
+  * [Deployed App](#Deployed-App)
+  * [Installation](#Installation)
+  * [Usage](#Usage)
+  * [Contributing](#Contributing)
+  * [Questions](#Questions)
+
+## User Story
+```
+AS AN employee with a busy schedule
+I WANT to add important events to a daily planner
+SO THAT I can manage my time effectively
+```
+## Deployed App
+GitHub: [Workday Scheduler](https://jonnikim.github.io/05WorkDayScheduler/)
+
+## Installation
+```
+i. Fork the Github repository.
+ii. Clone the forked repo into your local machine
+iii. open index.html in browser
+```
+
+## USAGE
+
+Notable Technologies Used:
+- Moment.js
 
 Using Moment.js, I was able to grab the current date/time/hour to be used and displayed.
 Using a for loops, I created the necessary HTML elements for each time block. The for loop also added the necessary classes/ids needed to target/select, as well as set and get unique Local Storage variables.
@@ -11,7 +40,15 @@ Using if/else statements, the current hour was compared to the hour value of eac
 
 Clicking the save button will automatically save the currently inputted value of each timeblock to its unique storage value.
 
-## Credit
+## Contributing
+[Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/code_of_conduct.md)
 
-https://momentjs.com/docs/
-https://api.jquery.com/parent/
+## License 
+[MIT](https://github.com/jonnikim/05WorkDayScheduler/blob/master/LICENSE) | Copyright © 2020 Jonathan Kim
+
+## Questions  
+Have questions? Contact me at:
+##### Email: jonathan213kim@gmail.com
+##### Github: https://github.com/jonnikim
+##### Porftolio: https://dry-springs-76393.herokuapp.com/
+##### LinkedIn: https://www.linkedin.com/in/jonathan-h-kim/
