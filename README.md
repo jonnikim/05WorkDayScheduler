@@ -6,7 +6,6 @@ Create a simple calendar application that allows the user to save events for eac
 
 # Table of Contents
   * [User Story](#User-Story)
-  * [Deployed App](#Deployed-App)
   * [Installation](#Installation)
   * [Usage](#Usage)
   * [Contributing](#Contributing)
@@ -18,8 +17,6 @@ AS AN employee with a busy schedule
 I WANT to add important events to a daily planner
 SO THAT I can manage my time effectively
 ```
-## Deployed App
-GitHub: [Workday Scheduler](https://jonnikim.github.io/05WorkDayScheduler/)
 
 ## Installation
 ```
